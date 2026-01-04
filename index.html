@@ -10,206 +10,140 @@
 
 <body>
 
-  <!-- 言語切替ボタン -->
-  <div class="langbar" aria-label="Language switch">
-    <button type="button" data-set-lang="jp">JP</button>
-    <button type="button" data-set-lang="en">EN</button>
+  <!-- 言語切替（固定UI） -->
+  <div class="langbar">
+    <button type="button" data-lang-btn="jp" class="active">JP</button>
+    <button type="button" data-lang-btn="en">EN</button>
   </div>
 
-  <!-- =======================
-       ① HERO
-  ======================== -->
-  <section class="hero" data-lang="jp">
-    <img class="hero__img"
-      src="./img/house-view.png"
-      alt="建物の外観">
-    <div class="hero__overlay">
-      <div class="hero__content">
-        <h1>まだ何者でもおじさんの家（仮）</h1>
-        <p class="note">普通の一軒家に、泊まるという選択。</p>
-      </div>
-    </div>
-  </section>
+  <!-- スクロール & snap の器 -->
+  <main class="snap">
 
-  <section class="hero" data-lang="en" hidden>
-    <img class="hero__img"
-      src="./img/house-view.png"
-      alt="Exterior view of the house">
-    <div class="hero__overlay">
-      <div class="hero__content">
-        <h1>House 〇〇 (Temp.)</h1>
+    <!-- HERO -->
+    <section class="hero snap-section">
+      <img class="hero__img" src="./img/house-view.png" alt="建物の外観">
+      <div class="hero__overlay">
+        <div class="hero__content">
+          <h1>
+            <span data-lang="jp">まだ何者でもおじさんの家（仮）</span>
+            <span data-lang="en" hidden>House 〇〇 (Temp.)</span>
+          </h1>
+          <p class="note">
+            <span data-lang="jp">普通の一軒家に、泊まるという選択。</span>
+            <span data-lang="en" hidden>A quiet house in Kanazawa.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location-hero snap-section">
+      <img class="location-hero__img" src="./img/kanazawa-location.png" alt="金沢観光地アクセス">
+      <div class="location-hero__content">
+        <h2>
+          <span data-lang="jp">金沢観光にちょうどいい場所</span>
+          <span data-lang="en" hidden>Convenient location in Kanazawa</span>
+        </h2>
         <p class="note">
-          A quiet house in Kanazawa —<br>
-          a simple place to slow down.
+          <span data-lang="jp">観光のあと、静かに休むための場所。</span>
+          <span data-lang="en" hidden>A quiet base after sightseeing.</span>
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- =======================
-       ② LOCATION
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>金沢観光にちょうどいい場所</h2>
-      <p class="note">この家は、石川県金沢市内にあります。</p>
-      <p class="note">
-        主要な観光地へアクセスしやすく、<br>
-        金沢観光の拠点として使いやすい立地です。
-      </p>
-      <p class="note">
-        観光を楽しんだあと、<br>
-        夜は静かに休む。<br>
-        そんな滞在に向いています。
-      </p>
-    </div>
-  </section>
+    <!-- ABOUT -->
+    <section class="snap-section" id="about">
+      <div class="about-grid">
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>Convenient location in Kanazawa</h2>
-      <p class="note">Located in Kanazawa city, Ishikawa.</p>
-      <p class="note">
-        Easy access to major sightseeing spots,<br>
-        making it a great base for exploring Kanazawa.
-      </p>
-      <p class="note">
-        Enjoy sightseeing during the day,<br>
-        and relax quietly at night.
-      </p>
-    </div>
-  </section>
+        <!-- 左上：文章① -->
+        <div class="about-cell about-text about-text--intro">
+          <h2>About</h2>
+          <p class="note">
+            この民泊は、<br>
+            「静かに過ごす場所があってもいい」<br>
+            という思いから生まれました。
+          </p>
+          <p class="note">
+            観光地の中心にある宿でも、<br>
+            特別な体験ができる宿でもありません。
+          </p>
+        </div>
 
-  <!-- =======================
-       ③ ABOUT THE HOUSE
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>この家のこと</h2>
-      <p class="note">
-        観光地にある特別な宿ではありません。<br>
-        静かな場所にある、普通の一軒家です。
-      </p>
-      <p class="note">
-        予定を詰め込まず、<br>
-        何もしない時間を過ごしたい方に向いています。
-      </p>
-    </div>
-  </section>
+        <!-- 右上：画像（ダイニング・キッチン） -->
+        <div class="about-cell about-media">
+          <img src="./img/about-dining-kitchen.png" alt="ダイニング・キッチンのイメージ">
+        </div>
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>About the house</h2>
-      <p class="note">
-        This is not a special tourist accommodation.<br>
-        It is a quiet, ordinary house.
-      </p>
-      <p class="note">
-        Best suited for guests who prefer a slow stay,<br>
-        without packed schedules.
-      </p>
-    </div>
-  </section>
+        <!-- 左下：画像（和室・リビング） -->
+        <div class="about-cell about-media">
+          <img src="./img/about-living-room.png" alt="和室とリビングのイメージ">
+        </div>
 
-  <!-- =======================
-       ④ FACILITIES
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>施設案内</h2>
-      <ul class="note">
-        <li>一軒家まるごと利用</li>
-        <li>寝具・Wi-Fiあり</li>
-        <li>キッチンあり（簡単な調理）</li>
-        <li>お風呂・シャワーあり</li>
-      </ul>
-    </div>
-  </section>
+        <!-- 右下：文章② -->
+        <div class="about-cell about-text about-text--outro">
+          <p class="note">
+            予定を詰め込みすぎず、<br>
+            何もしない時間を大切にしたい方に<br>
+            向いています。
+          </p>
+          <p class="note">
+            にぎやかな場所や、<br>
+            常に外出を予定している方には、<br>
+            合わないかもしれません。
+          </p>
+        </div>
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>Facilities</h2>
-      <ul class="note">
-        <li>Entire house</li>
-        <li>Bedding and Wi-Fi available</li>
-        <li>Kitchen (for simple cooking)</li>
-        <li>Bath / shower</li>
-      </ul>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- =======================
-       ⑤ BOOKING
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>ご予約について</h2>
-      <p class="note">
-        現在、準備中です。<br>
-        ご案内できる状態になりましたら、こちらでお知らせします。
-      </p>
-    </div>
-  </section>
+    <!-- FACILITIES -->
+    <section class="snap-section">
+      <div class="inner">
+        <h2>
+          <span data-lang="jp">施設案内</span>
+          <span data-lang="en" hidden>Facilities</span>
+        </h2>
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>Booking</h2>
-      <p class="note">
-        Currently under preparation.<br>
-        Updates will be posted here once booking becomes available.
-      </p>
-    </div>
-  </section>
+        <ul class="note" data-lang="jp">
+          <li>一軒家まるごと</li>
+          <li>Wi-Fiあり</li>
+          <li>キッチンあり</li>
+          <li>浴室あり</li>
+        </ul>
 
-  <!-- =======================
-       ⑥ ACCESS
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>アクセス</h2>
-      <p class="note">石川県金沢市内（詳細は予約確定後にご案内します）</p>
-      <p class="note">車での来訪をおすすめしています。</p>
-    </div>
-  </section>
+        <ul class="note" data-lang="en" hidden>
+          <li>Entire house</li>
+          <li>Wi-Fi</li>
+          <li>Kitchen</li>
+          <li>Bathroom</li>
+        </ul>
+      </div>
+    </section>
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>Access</h2>
-      <p class="note">
-        Located in Kanazawa city, Ishikawa.<br>
-        Detailed address will be provided after booking confirmation.
-      </p>
-      <p class="note">We recommend arriving by car.</p>
-    </div>
-  </section>
+    <!-- FOOTER -->
+    <footer class="snap-section">
+      <p data-lang="jp">© まだ何者でもおじさんの家（仮）</p>
+      <p data-lang="en" hidden>© House 〇〇 (Temp.)</p>
+    </footer>
 
-  <!-- =======================
-       ⑦ ABOUT (STORY)
-  ======================== -->
-  <section data-lang="jp">
-    <div class="inner">
-      <h2>About</h2>
-      <p class="note">
-        この民泊は、<br>
-        「静かに過ごす場所があってもいい」<br>
-        という思いから生まれました。
-      </p>
-    </div>
-  </section>
+  </main>
 
-  <section data-lang="en" hidden>
-    <div class="inner">
-      <h2>About</h2>
-      <p class="note">
-        This stay was created with a simple idea:<br>
-        that having a quiet place to slow down matters.
-      </p>
-    </div>
-  </section>
+  <script>
+    // 言語切替（最小）
+    const btns = document.querySelectorAll("[data-lang-btn]");
+    const targets = document.querySelectorAll("[data-lang]");
 
-  <footer data-lang="jp">© まだ何者でもおじさんの家の家（仮）</footer>
-  <footer data-lang="en" hidden>© House 〇〇 (Temp.)</footer>
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.dataset.langBtn;
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        targets.forEach(el => {
+          el.hidden = el.dataset.lang !== lang;
+        });
+      });
+    });
+  </script>
 
-  <script src="./script.js" defer></script>
 </body>
 </html>
