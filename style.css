@@ -187,3 +187,144 @@ footer{
     padding: 48px 0;
   }
 }
+/* ROOM セクション全体 */
+#room {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+/* 各部屋ブロック */
+.room-item {
+  margin-bottom: 96px;
+}
+.room-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+.room-item h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+/* ROOMの画像だけ、内側の幅制限を少し緩める */
+#room .inner {
+  max-width: 1040px;
+}
+/* ROOM: 画像を主役にする（まずはLDKだけ） */
+.room-hero{
+  width: 100%;
+  height: 56vh;          /* ドーン感：画面の56%の高さ */
+  object-fit: cover;     /* はみ出した分はトリミングして埋める */
+  display: block;        /* 画像の下の謎の隙間を消す */
+  border-radius: 16px;
+  margin: 0 0 24px;      /* 下に余白 */
+  max-height: 520px;
+}
+#room-ldk .room-hero{
+  height: 60vh;
+}
+
+#room-washitsu .room-hero{
+  height: 48vh;
+}
+
+#room-bedroom .room-hero{
+  height: 48vh;
+}
+@media (max-width: 768px){
+  .room-hero{
+    height: 40vh;
+    max-height: none;
+    border-radius: 12px;
+  }
+}
+/* STAY */
+#stay{
+  padding: 96px 0;
+}
+
+.stay-item{
+  margin-bottom: 64px;
+}
+
+.stay-item h3{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+/* STAY image */
+.stay-image{
+  margin: 48px 0 64px;
+}
+
+.stay-image img{
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  opacity: 0.95;
+}
+/* ===== STAY（single source of truth）===== */
+#stay{
+  padding: 0;
+  align-items: stretch; /* snap-sectionの中央寄せを解除 */
+}
+
+/* 画面中央に「器」を作る（はみ出し感を消す） */
+#stay .stay-split{
+  width: min(1280px, 94vw);
+  margin: 0 auto;
+
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr; /* ←ここを 1.0 / 1.2 / 1.3 で微調整 */
+  gap: 48px;
+  align-items: center;
+
+  padding: 56px 0; /* ←72pxが多いなら64/56へ */
+}
+
+/* 左：画像 */
+#stay .stay-media img{
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 112px); /* 上下padding(64*2)ぶんだけ収める */
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* 右：文章（読みやすい幅に） */
+#stay .stay-content .inner{
+  max-width: 560px; /* 読みやすさ優先。広げたければ 560/600 */
+  padding: 0;       /* ここで余計な左右paddingを消す */
+}
+
+#stay .stay-item{
+  margin-bottom: 32px; /* 段落の強弱（詰めすぎ防止） */
+}
+#stay .stay-item h3{
+  margin: 0 0 10px;
+}
+
+/* スマホ：縦並び */
+@media (max-width: 768px){
+  #stay .stay-split{
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 56px 0;
+  }
+  #stay .stay-media img{
+    height: 42vh;
+    max-height: none;
+    border-radius: 12px;
+  }
+  #stay .stay-content .inner{
+    max-width: 900px;
+    padding: 0 24px;
+  }
+}
