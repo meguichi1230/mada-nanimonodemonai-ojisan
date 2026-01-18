@@ -1,18 +1,105 @@
-/* ===== Reset ===== */
+/* =========================================================
+   Base / Reset
+========================================================= */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body {
+
+:root{
+  --header-h: 64px;
+  --footer-h: 48px; /* site-footerのheightと合わせる */
+  --vh: calc(100vh - var(--header-h) - var(--footer-h)); /* “見える領域” */
+}
+
+body{
   margin: 0;
   font-family: system-ui, -apple-system, "Noto Sans JP", sans-serif;
   color: #111;
+  overflow: hidden; /* snap運用 */
 }
 
-/* ===== Language bar ===== */
+/* =========================================================
+   Header
+========================================================= */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.header-inner{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand{
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.gnav{
+  display: flex;
+  gap: 28px;
+  align-items: center;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gnav::-webkit-scrollbar{ display: none; }
+
+.gnav a{
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  padding: 6px 2px;
+  white-space: nowrap;
+}
+.gnav a:hover{
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+
+.cta{
+  text-decoration: none;
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.7);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.cta:hover{
+  background: rgba(0,0,0,0.06);
+}
+
+/* =========================================================
+   Language Bar
+========================================================= */
 .langbar{
   position: fixed;
   top: 12px;
   right: 12px;
   z-index: 1000;
+
   display: flex;
   gap: 8px;
 }
@@ -28,30 +115,54 @@ body {
   color: #fff;
 }
 
-/* ===== Snap system（最小・安定） ===== */
-body{ overflow: hidden; }
-
+/* =========================================================
+   Snap Layout
+========================================================= */
 .snap{
-  height: 100vh;
+  height: var(--vh);
+  margin-top: var(--header-h);
+
   overflow-y: auto;
   scroll-snap-type: y mandatory;
+
+  /* JP/ENでスクロールバー有無が変わっても幅が揺れない */
+  scrollbar-gutter: stable;
 }
 
 .snap-section{
-  min-height: 100vh;
+  min-height: var(--vh);
   scroll-snap-align: start;
   scroll-snap-stop: always;
+
   display: flex;
-  align-items: center;
+  align-items: center; /* デフォは中央寄せ */
 }
 
-/* ===== HERO ===== */
+/* =========================================================
+   Common
+========================================================= */
+.inner{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.note{
+  color: #555;
+  line-height: 1.9;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
 .hero{ position: relative; }
+
 .hero__img{
   width: 100%;
-  height: 100vh;
+  height: var(--vh);
   object-fit: cover;
 }
+
 .hero__overlay{
   position: absolute;
   inset: 0;
@@ -59,25 +170,35 @@ body{ overflow: hidden; }
   align-items: flex-end;
   padding: 48px 24px;
 }
+
 .hero__content{
   max-width: 900px;
   margin: 0 auto;
   color: #fff;
 }
 
-/* ===== LOCATION ===== */
+.hero .note{
+  color: rgba(255,255,255,0.92);
+}
+
+/* =========================================================
+   LOCATION
+========================================================= */
 .location-hero{ position: relative; }
+
 .location-hero__img{
   width: 100%;
-  height: 100vh;
+  height: var(--vh);
   object-fit: cover;
 }
+
 .location-hero::after{
   content:"";
   position:absolute;
   inset:0;
   background: rgba(0,0,0,.4);
 }
+
 .location-hero__content{
   position:absolute;
   left:50%;
@@ -88,81 +209,36 @@ body{ overflow: hidden; }
   z-index:1;
 }
 
-/* ===== Normal sections ===== */
-.inner{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-.note{
-  color:#555;
-  line-height:1.9;
-}
-
-/* ===== Footer ===== */
-footer{
-  justify-content: center;
-  text-align: center;
-  background:#f5f5f5;
-}
-/* STEP 1：写真の上に乗る説明文だけ白にする */
-.hero .note,
 .location-hero .note{
   color: rgba(255,255,255,0.92);
 }
-/* STEP 5: ABOUT 2枚並び画像 */
-.about-images{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-bottom: 48px;
-}
 
-.about-images img{
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
-  object-fit: cover;
-}
-
-/* スマホでは縦並び */
-@media (max-width: 768px){
-  .about-images{
-    grid-template-columns: 1fr;
-  }
-}
-/* STEP 6: ABOUT画像を大きくしてドーン感を出す */
-.about-images{
-  width: min(1200px, 92vw);
-  margin-left: auto;
-  margin-right: auto;
-}
-/* STEP 8: ABOUTを2×2で1画面に配置 */
+/* =========================================================
+   ABOUT
+========================================================= */
 #about{
-  padding: 0;               /* snap-section共通の余白を打ち消す */
-  align-items: stretch;     /* 中央寄せをやめる（about-gridが全高を使う） */
+  padding: 0;
+  align-items: stretch; /* snap-section中央寄せ解除 */
 }
 
-/* 2×2グリッド本体 */
 .about-grid{
   width: min(1200px, 92vw);
   margin: 0 auto;
-  height: 100vh;            /* 1画面に収める */
+
+  height: var(--vh);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 24px;
-  padding: 72px 0;          /* 上下の気持ちいい余白 */
+
+  padding: 72px 0;
 }
 
-/* 各マス共通 */
 .about-cell{
   border-radius: 16px;
   overflow: hidden;
 }
 
-/* 文章マス */
 .about-text{
   display: flex;
   flex-direction: column;
@@ -170,7 +246,6 @@ footer{
   padding: 24px;
 }
 
-/* 画像マス */
 .about-media img{
   width: 100%;
   height: 100%;
@@ -178,153 +253,301 @@ footer{
   display: block;
 }
 
-/* スマホは縦積み（崩れないように） */
+/* =========================================================
+   ROOM
+========================================================= */
+#room{
+  padding: 0;
+  align-items: flex-start; /* 文章量での縦再配置を防ぐ */
+}
+
+#room .inner{
+  max-width: 1040px;
+  padding: 96px 24px;
+}
+
+.room-item{
+  margin-bottom: 96px;
+}
+
+.room-item h3{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+/* ROOM画像：比率固定（JP/ENでもブレない） */
+.room-hero{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  margin: 0 0 24px;
+}
+
+/* =========================================================
+   STAY
+========================================================= */
+#stay{
+  padding: 0;
+  align-items: stretch; /* snap-section中央寄せ解除 */
+}
+
+#stay .stay-split{
+  width: min(1280px, 94vw);
+  margin: 0 auto;
+
+  height: var(--vh);
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 48px;
+  align-items: center;
+
+  padding: 56px 0;
+}
+
+#stay .stay-media img{
+  width: 100%;
+  height: 100%;
+  max-height: calc(var(--vh) - 112px); /* 上下padding(56*2)ぶん引く */
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+#stay .stay-content .inner{
+  max-width: 560px;
+  padding: 0;
+}
+
+#stay .stay-item{ margin-bottom: 32px; }
+
+#stay .stay-item h3{
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+/* =========================================================
+   ACCESS
+========================================================= */
+.access-head{ margin-bottom: 28px; }
+
+.access-grid{
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 28px;
+  align-items: start;
+}
+
+.access-cards{
+  display: grid;
+  gap: 16px;
+}
+
+.access-card{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 18px;
+  background: rgba(255,255,255,0.7);
+}
+
+.access-card h3{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.access-list{
+  margin: 0;
+  padding-left: 18px;
+}
+
+.access-map{
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+}
+
+/* “表示で切る”本体：枠でトリミングする */
+.access-map__box{
+  width: 100%;
+  height: 420px;
+
+  border-radius: 16px;
+  overflow: hidden; /* ← これが切り抜き */
+  border: 1px dashed rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.02);
+}
+
+.access-map__box iframe{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* =========================================================
+   FOOTER（細くそっと：固定表示）
+========================================================= */
+.site-footer{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 800;
+
+  height: var(--footer-h);
+  display: flex;
+  align-items: center;
+
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(0,0,0,0.06);
+
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-inner{
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================================================
+   BOOKING page (non-snap)
+========================================================= */
+.page{ overflow: auto; }
+.page-main{ padding-top: var(--header-h); }
+
+.page-hero{
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+}
+
+.booking-actions{
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.booking-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+
+  color: #111;
+  border: 1px solid rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.85);
+}
+.booking-btn:hover{ background: rgba(0,0,0,0.06); }
+
+.booking-sub{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+
+  color: #555;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.02);
+}
+.booking-sub:hover{ background: rgba(0,0,0,0.04); }
+
+.booking-note{ margin-top: 18px; }
+
+/* =========================================================
+   Responsive（スマホ）
+========================================================= */
 @media (max-width: 768px){
+  :root{
+    --header-h: 56px;
+    --footer-h: 48px;
+    --vh: calc(100vh - var(--header-h) - var(--footer-h));
+  }
+
+  /* Header：スマホはgnavを消して安定させる */
+  .header-inner{
+    width: min(1200px, 94vw);
+    justify-content: space-between;
+  }
+
+  .gnav{
+    display: none;
+  }
+
+  /* langbarの“席”を確保してBOOKINGと被らないようにする */
+  .cta{
+    margin-right: 86px; /* 78〜96pxで微調整OK */
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  .langbar{
+    top: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  .langbar button{
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  /* ABOUT：縦積み */
   .about-grid{
     height: auto;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     padding: 48px 0;
   }
-}
-/* ROOM セクション全体 */
-#room {
-  padding-top: 96px;
-  padding-bottom: 96px;
-}
-/* 各部屋ブロック */
-.room-item {
-  margin-bottom: 96px;
-}
-.room-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  margin-bottom: 24px;
-}
-.room-item h3 {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-/* ROOMの画像だけ、内側の幅制限を少し緩める */
-#room .inner {
-  max-width: 1040px;
-}
-/* ROOM: 画像を主役にする（まずはLDKだけ） */
-.room-hero{
-  width: 100%;
-  height: 56vh;          /* ドーン感：画面の56%の高さ */
-  object-fit: cover;     /* はみ出した分はトリミングして埋める */
-  display: block;        /* 画像の下の謎の隙間を消す */
-  border-radius: 16px;
-  margin: 0 0 24px;      /* 下に余白 */
-  max-height: 520px;
-}
-#room-ldk .room-hero{
-  height: 60vh;
-}
 
-#room-washitsu .room-hero{
-  height: 48vh;
-}
-
-#room-bedroom .room-hero{
-  height: 48vh;
-}
-@media (max-width: 768px){
+  /* ROOM：スマホは少し縦めにして見栄え安定 */
   .room-hero{
-    height: 40vh;
-    max-height: none;
+    aspect-ratio: 4 / 3;
     border-radius: 12px;
   }
-}
-/* STAY */
-#stay{
-  padding: 96px 0;
-}
 
-.stay-item{
-  margin-bottom: 64px;
-}
-
-.stay-item h3{
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-/* STAY image */
-.stay-image{
-  margin: 48px 0 64px;
-}
-
-.stay-image img{
-  width: 100%;
-  height: 40vh;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-  opacity: 0.95;
-}
-/* ===== STAY（single source of truth）===== */
-#stay{
-  padding: 0;
-  align-items: stretch; /* snap-sectionの中央寄せを解除 */
-}
-
-/* 画面中央に「器」を作る（はみ出し感を消す） */
-#stay .stay-split{
-  width: min(1280px, 94vw);
-  margin: 0 auto;
-
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1.25fr 1fr; /* ←ここを 1.0 / 1.2 / 1.3 で微調整 */
-  gap: 48px;
-  align-items: center;
-
-  padding: 56px 0; /* ←72pxが多いなら64/56へ */
-}
-
-/* 左：画像 */
-#stay .stay-media img{
-  width: 100%;
-  height: 100%;
-  max-height: calc(100vh - 112px); /* 上下padding(64*2)ぶんだけ収める */
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-}
-
-/* 右：文章（読みやすい幅に） */
-#stay .stay-content .inner{
-  max-width: 560px; /* 読みやすさ優先。広げたければ 560/600 */
-  padding: 0;       /* ここで余計な左右paddingを消す */
-}
-
-#stay .stay-item{
-  margin-bottom: 32px; /* 段落の強弱（詰めすぎ防止） */
-}
-#stay .stay-item h3{
-  margin: 0 0 10px;
-}
-
-/* スマホ：縦並び */
-@media (max-width: 768px){
+  /* STAY：縦並び */
   #stay .stay-split{
     height: auto;
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 56px 0;
   }
+
   #stay .stay-media img{
     height: 42vh;
     max-height: none;
     border-radius: 12px;
   }
+
   #stay .stay-content .inner{
     max-width: 900px;
     padding: 0 24px;
+  }
+
+  /* ACCESS：縦並び */
+  .access-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .access-map{
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .access-map__box{
+    height: 320px;
   }
 }

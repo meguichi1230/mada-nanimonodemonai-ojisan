@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking｜〇〇の家（仮）</title>
+  <meta name="description" content="〇〇の家（仮）の予約ページです。">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="page">
+
+  <!-- ===== 言語切替（固定UI） ===== -->
+  <div class="langbar">
+    <button type="button" data-lang-btn="jp" class="active">JP</button>
+    <button type="button" data-lang-btn="en">EN</button>
+  </div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html#top">〇〇の家</a>
+
+      <nav class="gnav" aria-label="Primary">
+        <a href="./index.html#room">ROOM</a>
+        <a href="./index.html#stay">STAY</a>
+        <a href="./index.html#access">ACCESS</a>
+      </nav>
+
+      <a class="cta" href="./booking.html" aria-current="page">BOOKING</a>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main class="page-main">
+    <section class="page-hero">
+      <div class="inner">
+
+        <h1>
+          <span data-lang="jp">予約</span>
+          <span data-lang="en" hidden>Booking</span>
+        </h1>
+
+        <p class="note">
+          <span data-lang="jp">予約サイト（Booking.com）からご予約ください。</span>
+          <span data-lang="en" hidden>Please make a reservation via Booking.com.</span>
+        </p>
+
+        <div class="booking-actions">
+          <!-- ★ Booking.com 実体リンク（URLだけ差し替える） -->
+          <a
+            class="booking-btn"
+            href="https://www.booking.com/（ここに施設のURL）"
+            target="_blank"
+            rel="noopener"
+          >
+            <span data-lang="jp">Booking.comで予約する</span>
+            <span data-lang="en" hidden>Book on Booking.com</span>
+          </a>
+
+          <!-- 補助導線 -->
+          <a class="booking-sub" href="./index.html#access">
+            <span data-lang="jp">場所を確認する</span>
+            <span data-lang="en" hidden>Check location</span>
+          </a>
+        </div>
+
+        <div class="booking-note">
+          <p class="note">
+            <span data-lang="jp">※料金・空室状況はBooking.comでご確認ください。</span>
+            <span data-lang="en" hidden>*Rates and availability are shown on Booking.com.</span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Language Switch Script ===== -->
+  <script>
+    const btns = document.querySelectorAll("[data-lang-btn]");
+    const targets = document.querySelectorAll("[data-lang]");
+
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.dataset.langBtn;
+        btns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        targets.forEach(el => {
+          el.hidden = el.dataset.lang !== lang;
+        });
+      });
+    });
+  </script>
+
+<

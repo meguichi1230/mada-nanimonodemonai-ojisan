@@ -9,24 +9,40 @@
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span data-lang="jp">何者でもない民泊</span>
+        <span data-lang="en" hidden>Nameless Stay</span>
+      </a>
 
-  <!-- 言語切替（固定UI） -->
-  <div class="langbar">
+      <nav class="gnav" aria-label="Primary">
+        <a href="#room">ROOM</a>
+        <a href="#stay">STAY</a>
+        <a href="#access">ACCESS</a>
+      </nav>
+
+      <a class="cta" href="./booking.html">BOOKING</a>
+    </div>
+  </header>
+
+  <!-- Language switch -->
+  <div class="langbar" aria-label="Language switch">
     <button type="button" data-lang-btn="jp" class="active">JP</button>
     <button type="button" data-lang-btn="en">EN</button>
   </div>
 
-  <!-- スクロール & snap の器 -->
+  <!-- Snap container -->
   <main class="snap">
-
     <!-- HERO -->
-    <section class="hero snap-section">
+    <section class="hero snap-section" id="top">
       <img class="hero__img" src="./img/house-view.png" alt="建物の外観">
       <div class="hero__overlay">
         <div class="hero__content">
           <h1>
             <span data-lang="jp">まだ何者でもおじさんの家（仮）</span>
-            <span data-lang="en" hidden>House 〇〇 (Temp.)</span>
+            <span data-lang="en" hidden>A Simple House Run by Ordinary People</span>
           </h1>
           <p class="note">
             <span data-lang="jp">普通の一軒家に、泊まるという選択。</span>
@@ -37,7 +53,7 @@
     </section>
 
     <!-- LOCATION -->
-    <section class="location-hero snap-section">
+    <section class="location-hero snap-section" id="location">
       <img class="location-hero__img" src="./img/kanazawa-location.png" alt="金沢観光地アクセス">
       <div class="location-hero__content">
         <h2>
@@ -54,144 +70,297 @@
     <!-- ABOUT -->
     <section class="snap-section" id="about">
       <div class="about-grid">
+        <div class="about-cell about-text">
+          <h2>
+            <span data-lang="jp">民泊について</span>
+            <span data-lang="en" hidden>About</span>
+          </h2>
 
-        <!-- 左上：文章① -->
-        <div class="about-cell about-text about-text--intro">
-          <h2>About</h2>
           <p class="note">
-            この民泊は、<br>
-            「静かに過ごす場所があってもいい」<br>
-            という思いから生まれました。
+            <span data-lang="jp">
+              この民泊は、<br>
+              「静かに過ごす場所があってもいい」<br>
+              という思いから生まれました。
+            </span>
+            <span data-lang="en" hidden>
+              This house was created with the idea that<br>
+              it’s okay to have a quiet place to simply stay.
+            </span>
           </p>
+
           <p class="note">
-            観光地の中心にある宿でも、<br>
-            特別な体験ができる宿でもありません。
+            <span data-lang="jp">
+              観光地の中心にある宿でも、<br>
+              特別な体験ができる宿でもありません。
+            </span>
+            <span data-lang="en" hidden>
+              It is not located in the heart of tourist areas,<br>
+              nor is it a place for special experiences.
+            </span>
           </p>
         </div>
 
-        <!-- 右上：画像（ダイニング・キッチン） -->
         <div class="about-cell about-media">
-          <img src="./img/about-dining-kitchen.png" alt="ダイニング・キッチンのイメージ">
+          <img src="./img/about-dining-kitchen.png" alt="Dining and kitchen area">
         </div>
 
-        <!-- 左下：画像（和室・リビング） -->
         <div class="about-cell about-media">
-          <img src="./img/about-living-room.png" alt="和室とリビングのイメージ">
+          <img src="./img/about-living-room.png" alt="Tatami room and living space">
         </div>
 
-        <!-- 右下：文章② -->
-        <div class="about-cell about-text about-text--outro">
+        <div class="about-cell about-text">
           <p class="note">
-            予定を詰め込みすぎず、<br>
-            何もしない時間を大切にしたい方に<br>
-            向いています。
+            <span data-lang="jp">
+              予定を詰め込みすぎず、<br>
+              何もしない時間を大切にしたい方に<br>
+              向いています。
+            </span>
+            <span data-lang="en" hidden>
+              This place suits those who prefer not to overfill their schedules<br>
+              and value time spent doing nothing.
+            </span>
           </p>
+
           <p class="note">
-            にぎやかな場所や、<br>
-            常に外出を予定している方には、<br>
-            合わないかもしれません。
+            <span data-lang="jp">
+              にぎやかな場所や、<br>
+              常に外出を予定している方には、<br>
+              合わないかもしれません。
+            </span>
+            <span data-lang="en" hidden>
+              It may not be suitable for those who seek lively places<br>
+              or plan to be out all the time.
+            </span>
           </p>
         </div>
-
       </div>
     </section>
 
-    <!-- =======================
-        ROOM
-    ======================= -->
+    <!-- ROOMS -->
     <section class="snap-section" id="room">
       <div class="inner">
+        <h2>
+          <span data-lang="jp">部屋</span>
+          <span data-lang="en" hidden>Rooms</span>
+        </h2>
 
-        <h2>部屋</h2>
-
-       <section class="room-item" id="room-ldk">
-          <img class="room-hero"
-              src="./img/room-ldk.png"
-              alt="リビング・ダイニング・キッチン">
-          <h3>リビング・ダイニング・キッチン</h3>
+        <section class="room-item" id="room-ldk">
+          <img class="room-hero" src="./img/room-ldk.png" alt="リビング・ダイニング・キッチン">
+          <h3>
+            <span data-lang="jp">リビング・ダイニング・キッチン</span>
+            <span data-lang="en" hidden>Living, Dining & Kitchen</span>
+          </h3>
           <p class="note">
-            この家の中心となるLDKです。
-            観光から戻ったあと、荷物を広げて一息つける空間として
-            静かに過ごせるよう整えています。
+            <span data-lang="jp">
+              この家の中心となるLDKです。
+              観光から戻ったあと、荷物を広げて一息つける空間として
+              静かに過ごせるよう整えています。
+            </span>
+            <span data-lang="en" hidden>
+              This is the heart of the house.
+              A calm and comfortable space where you can relax,
+              unpack your belongings, and take a break after sightseeing.
+            </span>
           </p>
         </section>
 
         <section class="room-item" id="room-washitsu">
-          <img class="room-hero"
-              src="./img/room-washitsu.png"
-              alt="和室">
-          <h3>和室</h3>
+          <img class="room-hero" src="./img/room-washitsu.png" alt="和室">
+          <h3>
+            <span data-lang="jp">和室</span>
+            <span data-lang="en" hidden>Japanese-style Room</span>
+          </h3>
           <p class="note">
-            畳のある、静かな和室です。
-            予定を詰め込まず、
-            何もしない時間を過ごしたい方に向いています。
+            <span data-lang="jp">
+              畳のある、静かな和室です。
+              予定を詰め込まず、
+              何もしない時間を過ごしたい方に向いています。
+            </span>
+            <span data-lang="en" hidden>
+              A quiet Japanese-style room with tatami mats.
+              Ideal for guests who want to slow down
+              and enjoy doing nothing.
+            </span>
           </p>
         </section>
 
         <section class="room-item" id="room-bedroom">
-          <img class="room-hero"
-              src="./img/room-bedroom.png"
-              alt="寝室">
-          <h3>寝室</h3>
+          <img class="room-hero" src="./img/room-bedroom.png" alt="寝室">
+          <h3>
+            <span data-lang="jp">寝室</span>
+            <span data-lang="en" hidden>Bedroom</span>
+          </h3>
           <p class="note">
-            夜は静かに休める寝室です。
-            清潔さと落ち着きを大切にし、
-            ゆっくりと体を休められるよう整えています。
+            <span data-lang="jp">
+              夜は静かに休める寝室です。
+              清潔さと落ち着きを大切にし、
+              ゆっくりと体を休められるよう整えています。
+            </span>
+            <span data-lang="en" hidden>
+              A quiet bedroom designed for restful nights.
+              Clean, calm, and comfortable,
+              so you can relax and recharge.
+            </span>
           </p>
         </section>
       </div>
     </section>
 
-    <!-- =======================
-        STAY
-    ======================= -->
-    <section class="snap-section" id="stay" data-lang="jp">
+    <!-- STAY -->
+    <section class="snap-section" id="stay">
       <div class="stay-split">
-
-        <!-- 左：画像（画面幅を使う） -->
         <div class="stay-media">
           <img src="./img/stay-quiet.png" alt="静かな時間を過ごすための空間">
         </div>
 
-        <!-- 右：文章（読みやすい幅） -->
         <div class="stay-content">
           <div class="inner">
-            <h2>滞在</h2>
+            <h2>
+              <span data-lang="jp">滞在</span>
+              <span data-lang="en" hidden>Stay</span>
+            </h2>
 
             <div class="stay-item">
-              <h3>戻ってくる</h3>
+              <h3>
+                <span data-lang="jp">ただいま</span>
+                <span data-lang="en" hidden>Come back</span>
+              </h3>
               <p class="note">
-                観光から戻ったあと、この家は「一度立ち止まる場所」になります。<br>
-                靴を脱いで、荷物を置いて、次の予定を急いで決めなくても大丈夫です。
+                <span data-lang="jp">
+                  観光から戻ったあと、この家は「一度立ち止まる場所」になります。<br>
+                  靴を脱いで、荷物を置いて、次の予定を急いで決めなくても大丈夫です。
+                </span>
+                <span data-lang="en" hidden>
+                  After sightseeing, this house becomes a place to pause.<br>
+                  Take off your shoes, drop your bags, and slow down.
+                </span>
               </p>
             </div>
 
             <div class="stay-item">
-              <h3>何もしない</h3>
+              <h3>
+                <span data-lang="jp">何もしない</span>
+                <span data-lang="en" hidden>Do nothing</span>
+              </h3>
               <p class="note">
-                予定を詰め込まなくても、この家で過ごす時間があります。<br>
-                畳に座ったり、窓の外を眺めたり。何もしない時間も、滞在の一部です。
+                <span data-lang="jp">
+                  予定を詰め込まなくても、この家で過ごす時間があります。<br>
+                  畳に座ったり、窓の外を眺めたり。何もしない時間も、滞在の一部です。
+                </span>
+                <span data-lang="en" hidden>
+                  You don’t have to fill your schedule.<br>
+                  Sit on tatami, watch outside—doing nothing is part of the stay.
+                </span>
               </p>
             </div>
 
             <div class="stay-item">
-              <h3>また出かける</h3>
+              <h3>
+                <span data-lang="jp">また出かける</span>
+                <span data-lang="en" hidden>Go out again</span>
+              </h3>
               <p class="note">
-                朝は、静かに準備をして出かけられます。<br>
-                観光の拠点として、毎日ここに戻ってこられる安心感があります。
+                <span data-lang="jp">
+                  朝は、静かに準備をして出かけられます。<br>
+                  観光の拠点として、毎日ここに戻ってこられる安心感があります。
+                </span>
+                <span data-lang="en" hidden>
+                  In the morning, you can prepare quietly and head out.<br>
+                  It’s a calm base you can return to each day.
+                </span>
               </p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
+    <!-- ACCESS -->
+    <section class="snap-section" id="access">
+      <div class="inner access">
+        <header class="access-head">
+          <h2>
+            <span data-lang="jp">アクセス</span>
+            <span data-lang="en" hidden>Access</span>
+          </h2>
+          <p class="note">
+            <span data-lang="jp">金沢観光の拠点として、移動しやすい場所です。</span>
+            <span data-lang="en" hidden>A convenient base for exploring Kanazawa.</span>
+          </p>
+        </header>
 
+        <div class="access-grid">
+          <div class="access-cards">
+            <section class="access-card">
+              <h3>
+                <span data-lang="jp">最寄り</span>
+                <span data-lang="en" hidden>Nearest</span>
+              </h3>
+              <ul class="note access-list">
+                <li>
+                  <span data-lang="jp">バス停：〇〇（徒歩〇分）</span>
+                  <span data-lang="en" hidden>Bus stop: XX (X min walk)</span>
+                </li>
+                <li>
+                  <span data-lang="jp">コンビニ：〇〇（徒歩〇分）</span>
+                  <span data-lang="en" hidden>Convenience store: XX (X min walk)</span>
+                </li>
+              </ul>
+            </section>
 
+            <section class="access-card">
+              <h3>
+                <span data-lang="jp">主要スポットまで</span>
+                <span data-lang="en" hidden>To major spots</span>
+              </h3>
+              <ul class="note access-list">
+                <li>
+                  <span data-lang="jp">金沢駅：〇分</span>
+                  <span data-lang="en" hidden>Kanazawa Station: X min</span>
+                </li>
+                <li>
+                  <span data-lang="jp">兼六園：〇分</span>
+                  <span data-lang="en" hidden>Kenrokuen: X min</span>
+                </li>
+                <li>
+                  <span data-lang="jp">ひがし茶屋街：〇分</span>
+                  <span data-lang="en" hidden>Higashi Chaya District: X min</span>
+                </li>
+              </ul>
+            </section>
+
+            <section class="access-card">
+              <h3>
+                <span data-lang="jp">駐車・チェックイン</span>
+                <span data-lang="en" hidden>Parking & check-in</span>
+              </h3>
+              <p class="note">
+                <span data-lang="jp">駐車：〇〇（台数 / 料金）／チェックイン：〇〇</span>
+                <span data-lang="en" hidden>Parking: XX / Check-in: XX</span>
+              </p>
+            </section>
+          </div>
+
+          <div class="access-map" aria-label="Map">
+            <div class="access-map__box">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.667386016281!2d136.660071211574!3d36.56213208096766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff83383f9b25905%3A0x970a7b3df003f2e4!2z5YW85YWt5ZyS!5e0!3m2!1sja!2sjp!4v1768721083100!5m2!1sja!2sjp"
+                title="Google Map"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- FACILITIES -->
-    <section class="snap-section">
+    <section class="snap-section" id="facilities">
       <div class="inner">
         <h2>
           <span data-lang="jp">施設案内</span>
@@ -213,17 +382,16 @@
         </ul>
       </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="snap-section">
-      <p data-lang="jp">© まだ何者でもおじさんの家（仮）</p>
-      <p data-lang="en" hidden>© House 〇〇 (Temp.)</p>
+  </main>
+   <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p data-lang="jp">© まだ何者でもおじさんの家（仮）</p>
+        <p data-lang="en" hidden>© Nameless Stay</p>
+      </div>
     </footer>
 
-  </main>
-
   <script>
-    // 言語切替（最小）
     const btns = document.querySelectorAll("[data-lang-btn]");
     const targets = document.querySelectorAll("[data-lang]");
 
@@ -233,11 +401,10 @@
         btns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         targets.forEach(el => {
-          el.hidden = el.dataset.lang !== lang;
+          el.hidden = (el.dataset.lang !== lang);
         });
       });
     });
   </script>
-
 </body>
 </html>
